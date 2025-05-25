@@ -197,10 +197,14 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, doc, getDoc, addDoc, setDoc, updateDoc, deleteDoc, onSnapshot, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables for Firebase config and app ID
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        const firebaseConfig = {
+  apiKey: "AIzaSyD9WZ7MyH35GUl180KE8hR__bpxMDDwXAo",
+  authDomain: "order-tracker-v2bi8.firebaseapp.com",
+  projectId: "order-tracker-v2bi8",
+  storageBucket: "order-tracker-v2bi8.firebasestorage.app",
+  messagingSenderId: "586700407381",
+  appId: "1:586700407381:web:9bcc5131190e3c62d44adc"
+};
 
         // Initialize Firebase
         let app;
