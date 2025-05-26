@@ -319,32 +319,23 @@
                 db = getFirestore(app);
                 auth = getAuth(app);
 
-                onAuthStateChanged(auth, async (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        userIdDisplay.textContent = userId;
-                        isAuthReady = true;
-                        console.log("Firebase initialized and user authenticated:", userId);
-                        // Start listening to Firestore data once authenticated
-                        setupFirestoreListeners();
-                    } else {
-                        // Sign in anonymously if no user is authenticated and no custom token
-                        if (!initialAuthToken) {
-                            await signInAnonymously(auth);
-                            console.log("Signed in anonymously.");
-                        } else {
-                            // Use custom token if provided
-                            try {
-                                await signInWithCustomToken(auth, initialAuthToken);
-                                console.log("Signed in with custom token.");
-                            } catch (error) {
-                                console.error("Error signing in with custom token:", error);
-                                await signInAnonymously(auth); // Fallback to anonymous
-                                console.log("Fallback to anonymous sign-in.");
-                            }
-                        }
-                    }
-                });
+                // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD9WZ7MyH35GUl180KE8hR__bpxMDDwXAo",
+  authDomain: "order-tracker-v2bi8.firebaseapp.com",
+  projectId: "order-tracker-v2bi8",
+  storageBucket: "order-tracker-v2bi8.firebasestorage.app",
+  messagingSenderId: "586700407381",
+  appId: "1:586700407381:web:9bcc5131190e3c62d44adc"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
             } catch (error) {
                 console.error("Error initializing Firebase:", error);
                 // showCustomModal("Error de Inicialización", "No se pudo inicializar Firebase. Por favor, recarga la página."); // Removed notification
